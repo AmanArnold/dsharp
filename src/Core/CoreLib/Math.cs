@@ -38,91 +38,114 @@ namespace System {
         [ScriptName(PreserveCase = true)]
         public static double SQRT2;
 
-        public static Number Abs(Number n) {
-            return 0;
-        }
+        public static extern Int16 Abs(Int16 value);
 
-        public static Number Acos(Number n) {
-            return 0;
-        }
+        public static extern Int32 Abs(Int32 value);
 
-        public static Number Asin(Number n) {
-            return 0;
-        }
+        public static extern Int64 Abs(Int64 value);
 
-        public static Number Atan(Number n) {
-            return 0;
-        }
+        public static extern Single Abs(Single value);
 
-        public static Number Atan2(Number x, Number y) {
-            return 0;
-        }
+        public static extern Double Abs(Double value);
 
-        public static Number Ceil(Number n) {
-            return 0;
-        }
+        public static extern Decimal Abs(Decimal value);
 
-        public static Number Cos(Number n) {
-            return 0;
-        }
+        public static extern Double Acos(Double value);
 
-        public static Number Exp(Number n) {
-            return 0;
-        }
+        public static extern Double Asin(Double value);
 
-        public static Number Floor(Number n) {
-            return 0;
-        }
+        public static extern Double Atan(Double value);
 
-        public static Number Log(Number n) {
-            return 0;
-        }
+        public static extern Double Atan2(Double value);
 
-        public static Number Max(params Number[] numbers) {
-            return 0;
-        }
+        public static extern Double Ceil(Double value);
 
-        public static Number Min(params Number[] numbers) {
-            return 0;
-        }
+        public static extern Double Cos(Double value);
 
-        public static Number Pow(Number baseNumber, Number exponent) {
-            return 0;
-        }
+        public static extern Double Cosh(Double value);
 
-        public static Number Random() {
-            return 0;
-        }
+        public static extern Double Pow(Double baseNumber, Double exponent);
 
-        public static Number Round(Number n) {
-            return 0;
-        }
+        public static extern Double Exp(Double value);
 
-        public static Number Sin(Number n) {
-            return 0;
-        }
+        public static extern Double Floor(Double value);
 
-        public static Number Sqrt(Number n) {
-            return 0;
-        }
+        public static extern Decimal Floor(Decimal value);
 
-        public static Number Tan(Number n) {
-            return 0;
-        }
+        public static extern Double Log(Double value);
+
+        public static extern Double Log10(Double value);
+
+        public static extern Double Sin(Double value);
+
+        public static extern Double Sinh(Double value);
+
+        public static extern Double Sqrt(Double value);
+
+        public static extern Double Tan(Double value);
+
+        public static extern Double Tanh(Double value);
+
+        [CLSCompliant(false)]
+        public static extern SByte Min(SByte first, SByte second);
+
+        [CLSCompliant(false)]
+        public static extern Byte Min(Byte first, Byte second);
+
+        public static extern Int16 Min(Int16 first, Int16 second);
+
+        [CLSCompliant(false)]
+        public static extern UInt16 Min(UInt16 first, UInt16 second);
+
+        public static extern Int32 Min(Int32 first, Int32 second);
+
+        [CLSCompliant(false)]
+        public static extern UInt32 Min(UInt32 first, UInt32 second);
+
+        public static extern Int64 Min(Int64 first, Int64 second);
+
+        [CLSCompliant(false)]
+        public static extern UInt64 Min(UInt64 first, UInt64 second);
+
+        public static extern Single Min(Single first, Single second);
+
+        public static extern Double Min(Double first, Double second);
+
+        public static extern Decimal Min(Decimal first, Decimal second);
+
+        [CLSCompliant(false)]
+        public static extern SByte Max(SByte first, SByte second);
+
+        [CLSCompliant(false)]
+        public static extern Byte Max(Byte first, Byte second);
+
+        public static extern Int16 Max(Int16 first, Int16 second);
+
+        [CLSCompliant(false)]
+        public static extern UInt16 Max(UInt16 first, UInt16 second);
+
+        public static extern Int32 Max(Int32 first, Int32 second);
+
+        [CLSCompliant(false)]
+        public static extern UInt32 Max(UInt32 first, UInt32 second);
+
+        public static extern Int64 Max(Int64 first, Int64 second);
+
+        [CLSCompliant(false)]
+        public static extern UInt64 Max(UInt64 first, UInt64 second);
+
+        public static extern Single Max(Single first, Single second);
+
+        public static extern Double Max(Double first, Double second);
+
+        public static extern Decimal Max(Decimal first, Decimal second);
+
+        public static extern Double Round(Double value);
 
         [ScriptAlias("ss.truncate")]
-        public static int Truncate(Number n) {
-            return 0;
-        }
+        public static extern int Truncate(double value);
 
         [ScriptAlias("ss.truncate")]
-        public static int Truncate(double n) {
-            return 0;
-        }
-
-        [ScriptAlias("ss.truncate")]
-        public static int Truncate(float n) {
-            return 0;
-        }
+        public static extern int Truncate(float value);
     }
 }

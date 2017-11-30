@@ -74,10 +74,5 @@ namespace System {
         public string ToPrecision(int precision) {
             return null;
         }
-
-        /// <internalonly />
-        public static implicit operator Number(float i) {
-            return null;
-        }
     }
 }

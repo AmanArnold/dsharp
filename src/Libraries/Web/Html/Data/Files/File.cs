@@ -4,9 +4,10 @@
 //
 
 using System.Runtime.CompilerServices;
+using Browser;
 
-namespace System.Html.Data.Files {
-
+namespace System.Html.Data.Files
+{
     [ScriptIgnoreNamespace]
     [ScriptImport]
     public sealed class File : Blob {

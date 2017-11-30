@@ -154,5 +154,16 @@ namespace Browser
         public static extern implicit operator Number(int i);
 
         public static extern implicit operator Number(long i);
+
+        public static extern implicit operator Number(float i);
+
+        [CLSCompliant(false)]
+        public static extern implicit operator Number(ushort i);
+
+        [CLSCompliant(false)]
+        public static extern implicit operator Number(uint i);
+
+        [CLSCompliant(false)]
+        public static extern implicit operator Number(ulong i);
     }
 }

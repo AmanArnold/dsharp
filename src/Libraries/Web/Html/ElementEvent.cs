@@ -5,6 +5,7 @@
 
 using System;
 using System.Runtime.CompilerServices;
+using Browser;
 
 namespace System.Html {
 

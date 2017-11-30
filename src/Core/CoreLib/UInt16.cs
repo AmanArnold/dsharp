@@ -23,11 +23,5 @@ namespace System {
         public string ToString(int radix) {
             return null;
         }
-
-        /// <internalonly />
-        [CLSCompliant(false)]
-        public static implicit operator Number(ushort i) {
-            return null;
-        }
     }
 }

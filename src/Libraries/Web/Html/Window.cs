@@ -3,16 +3,16 @@
 // This source code is subject to terms and conditions of the Apache License, Version 2.0.
 //
 
-using System;
 using System.Html.Data;
 using System.Html.Data.Files;
 using System.Html.Data.IndexedDB;
 using System.Html.Data.Sql;
 using System.Html.Editing;
 using System.Runtime.CompilerServices;
+using Browser;
 
-namespace System.Html {
-
+namespace System.Html
+{
     /// <summary>
     /// The window object represents the current browser window, and is the top-level
     /// scripting object.

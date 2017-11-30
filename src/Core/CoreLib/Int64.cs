@@ -29,8 +29,5 @@ namespace System
         {
             return null;
         }
-
-        /// <internalonly />
-        
     }
 }
