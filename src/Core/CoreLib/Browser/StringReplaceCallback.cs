@@ -5,8 +5,8 @@
 
 using System.Runtime.CompilerServices;
 
-namespace System {
-
+namespace Browser
+{
     // TODO: The actual signature needs to be
     //       string callback(match, m1, m2... mN, offset, fullString)
     //       but there isn't a way to express the varying number of parameters in the

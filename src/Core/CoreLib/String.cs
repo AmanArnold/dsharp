@@ -43,23 +43,7 @@ namespace System {
             }
         }
 
-        /// <summary>
-        /// Retrieves the character at the specified position.
-        /// </summary>
-        /// <param name="index">The specified 0-based position.</param>
-        /// <returns>The character within the string.</returns>
-        public char CharAt(int index) {
-            return '\0';
-        }
-
-        /// <summary>
-        /// Retrieves the character code of the character at the specified position.
-        /// </summary>
-        /// <param name="index">The specified 0-based position.</param>
-        /// <returns>The character code of the character within the string.</returns>
-        public int CharCodeAt(int index) {
-            return 0;
-        }
+        
 
         [ScriptAlias("ss.compareStrings")]
         public static int Compare(string s1, string s2) {
@@ -121,42 +105,6 @@ namespace System {
         }
 
         /// <summary>
-        /// Returns the unencoded version of a complete encoded URI.
-        /// </summary>
-        /// <returns>The unencoded string.</returns>
-        [ScriptAlias("decodeURI")]
-        public string DecodeUri() {
-            return null;
-        }
-
-        /// <summary>
-        /// Returns the unencoded version of a single part or component of an encoded URI.
-        /// </summary>
-        /// <returns>The unencoded string.</returns>
-        [ScriptAlias("decodeURIComponent")]
-        public string DecodeUriComponent() {
-            return null;
-        }
-
-        /// <summary>
-        /// Encodes the complete URI.
-        /// </summary>
-        /// <returns>The encoded string.</returns>
-        [ScriptAlias("encodeURI")]
-        public string EncodeUri() {
-            return null;
-        }
-
-        /// <summary>
-        /// Encodes a single part or component of a URI.
-        /// </summary>
-        /// <returns>The encoded string.</returns>
-        [ScriptAlias("encodeURIComponent")]
-        public string EncodeUriComponent() {
-            return null;
-        }
-
-        /// <summary>
         /// Determines if the string ends with the specified character.
         /// </summary>
         /// <param name="ch">The character to test for.</param>
@@ -176,15 +124,6 @@ namespace System {
             return false;
         }
 
-        /// <summary>
-        /// Encodes a string by replacing punctuation, spaces etc. with their escaped equivalents.
-        /// </summary>
-        /// <returns>The escaped string.</returns>
-        [ScriptAlias("escape")]
-        public string Escape() {
-            return null;
-        }
-
         [ScriptAlias("ss.format")]
         public static string Format(string format, params object[] values) {
             return null;
@@ -192,19 +131,6 @@ namespace System {
 
         [ScriptAlias("ss.format")]
         public static string Format(CultureInfo culture, string format, params object[] values) {
-            return null;
-        }
-
-        [ScriptAlias("ss.string")]
-        public static string FromChar(char ch, int count) {
-            return null;
-        }
-
-        public static string FromCharCode(int charCode) {
-            return null;
-        }
-
-        public static string FromCharCode(params int[] charCodes) {
             return null;
         }
 
@@ -255,9 +181,6 @@ namespace System {
             return 0;
         }
 
-        public string[] Match(RegExp regex) {
-            return null;
-        }
 
         [ScriptAlias("ss.padLeft")]
         public string PadLeft(int totalWidth) {
@@ -294,25 +217,6 @@ namespace System {
             return null;
         }
 
-        [ScriptName("replace")]
-        public string ReplaceFirst(string oldText, string replaceText) {
-            return null;
-        }
-
-        [ScriptName("replace")]
-        public string ReplaceRegex(RegExp regex, string replaceText) {
-            return null;
-        }
-
-        [ScriptName("replace")]
-        public string ReplaceRegex(RegExp regex, StringReplaceCallback callback) {
-            return null;
-        }
-
-        public int Search(RegExp regex) {
-            return 0;
-        }
-
         public string[] Split(char ch) {
             return null;
         }
@@ -329,14 +233,6 @@ namespace System {
             return null;
         }
 
-        public string[] Split(RegExp regex) {
-            return null;
-        }
-
-        public string[] Split(RegExp regex, int limit) {
-            return null;
-        }
-
         [ScriptAlias("ss.startsWith")]
         public bool StartsWith(char ch) {
             return false;
@@ -347,14 +243,6 @@ namespace System {
             return false;
         }
 
-        public string Substr(int startIndex) {
-            return null;
-        }
-
-        public string Substr(int startIndex, int length) {
-            return null;
-        }
-
         public string Substring(int startIndex) {
             return null;
         }
@@ -363,27 +251,8 @@ namespace System {
             return null;
         }
 
-        public string ToLocaleLowerCase() {
-            return null;
-        }
-
-        public string ToLocaleUpperCase() {
-            return null;
-        }
-
-        [Obsolete("ToLowerCase() should not be used, switch to ToLower()")]
-        public string ToLowerCase() {
-            return null;
-        }
-
         [ScriptName("toLowerCase")]
         public string ToLower()
-        {
-            return null;
-        }
-
-        [Obsolete("ToUpperCase() should not be used, switch to ToUpper()")]
-        public string ToUpperCase()
         {
             return null;
         }
@@ -400,36 +269,17 @@ namespace System {
         }
 
         [ScriptAlias("ss.trim")]
-        public string Trim(char[] trimCharacters) {
+        public string Trim(params char[] trimCharacters) {
             return null;
         }
 
         [ScriptAlias("ss.trimEnd")]
-        public string TrimEnd() {
-            return null;
-        }
-
-        [ScriptAlias("ss.trimEnd")]
-        public string TrimEnd(char[] trimCharacters) {
+        public string TrimEnd(params char[] trimCharacters) {
             return null;
         }
 
         [ScriptAlias("ss.trimStart")]
-        public string TrimStart() {
-            return null;
-        }
-
-        [ScriptAlias("ss.trimStart")]
-        public string TrimStart(char[] trimCharacters) {
-            return null;
-        }
-
-        /// <summary>
-        /// Decodes a string by replacing escaped parts with their equivalent textual representation.
-        /// </summary>
-        /// <returns>The unescaped string.</returns>
-        [ScriptAlias("unescape")]
-        public string Unescape() {
+        public string TrimStart(params char[] trimCharacters) {
             return null;
         }
 

@@ -2,12 +2,10 @@
 // Script#/Libraries/CoreLib
 // This source code is subject to terms and conditions of the Apache License, Version 2.0.
 //
-
-using System;
 using System.Runtime.CompilerServices;
 
-namespace System.ComponentModel {
-
+namespace System.ComponentModel
+{
     /// <summary>
     /// Encapsulates the functionality of a container that defines a scope of
     /// composition where objects can be registered and dependencies can be resolved.
