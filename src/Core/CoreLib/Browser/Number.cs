@@ -3,10 +3,11 @@
 // This source code is subject to terms and conditions of the Apache License, Version 2.0.
 //
 
+using System;
 using System.Runtime.CompilerServices;
 
-namespace System {
-
+namespace Browser
+{
     /// <summary>
     /// Equivalent to the Number type in Javascript.
     /// </summary>
@@ -137,8 +138,21 @@ namespace System {
         }
 
         /// <internalonly />
-        public static implicit operator int(Number n) {
-            return 0;
-        }
+        public static extern implicit operator int(Number n);
+
+        public static extern implicit operator Number(byte i);
+
+        [CLSCompliant(false)]
+        public static extern implicit operator Number(sbyte i);
+
+        public static extern implicit operator Number(decimal i);
+
+        public static extern implicit operator Number(double i);
+
+        public static extern implicit operator Number(short i);
+
+        public static extern implicit operator Number(int i);
+
+        public static extern implicit operator Number(long i);
     }
 }

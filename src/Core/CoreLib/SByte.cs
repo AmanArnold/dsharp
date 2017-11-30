@@ -24,10 +24,6 @@ namespace System {
             return null;
         }
 
-        /// <internalonly />
-        [CLSCompliant(false)]
-        public static implicit operator Number(sbyte i) {
-            return null;
-        }
+       
     }
 }

@@ -3,10 +3,11 @@
 // This source code is subject to terms and conditions of the Apache License, Version 2.0.
 //
 
+using System;
 using System.Runtime.CompilerServices;
 
-namespace System {
-
+namespace Browser
+{
     /// <summary>
     /// Equivalent to the Function type in Javascript.
     /// </summary>
@@ -81,5 +82,8 @@ namespace System {
         public static explicit operator Type(Function f) {
             return null;
         }
+
+        [ScriptAlias("ss.bind")]
+        public static extern Delegate Create(Function f, object instance);
     }
 }

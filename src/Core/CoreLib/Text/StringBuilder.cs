@@ -58,15 +58,6 @@ namespace System.Text {
         }
 
         /// <summary>
-        /// Appends a number to the end of the <see cref="StringBuilder"/> instance.
-        /// </summary>
-        /// <param name="n">The number to append to the end of the StringBuilder instance.</param>
-        /// <returns>A reference to this instance after the append operation has completed.</returns>
-        public StringBuilder Append(Number n) {
-            return null;
-        }
-
-        /// <summary>
         /// Appends an object's string representation to the end of the <see cref="StringBuilder"/> instance.
         /// </summary>
         /// <param name="o">The object to append to the end of the StringBuilder instance.</param>
@@ -107,15 +98,6 @@ namespace System.Text {
         /// <param name="c">The character to append to the end of the StringBuilder instance.</param>
         /// <returns>A reference to this instance after the append operation has completed.</returns>
         public StringBuilder AppendLine(char c) {
-            return null;
-        }
-
-        /// <summary>
-        /// Appends a number with a line terminator to the end of the <see cref="StringBuilder"/> instance.
-        /// </summary>
-        /// <param name="n">The number to append to the end of the StringBuilder instance.</param>
-        /// <returns>A reference to this instance after the append operation has completed.</returns>
-        public StringBuilder AppendLine(Number n) {
             return null;
         }
 

@@ -21,12 +21,6 @@ namespace System {
             return null;
         }
 
-        [ScriptAlias("ss.bind")]
-        public static Delegate Create(Function f, object instance) {
-            return null;
-        }
-
-
         [ScriptAlias("ss.bindSub")]
         public static Delegate Remove(Delegate source, Delegate value) {
             return null;
