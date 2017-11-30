@@ -9,9 +9,6 @@ namespace System.Collections
 
         object Value { get; }
 
-        DictionaryEntry Entry
-        {
-            get;
-        }
+        DictionaryEntry Entry { get; }
     }
 }

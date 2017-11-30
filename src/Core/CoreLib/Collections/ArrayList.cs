@@ -64,28 +64,6 @@ namespace System.Collections {
             return false;
         }
 
-        public bool Every(ArrayFilterCallback filterCallback) {
-            return false;
-        }
-
-        public bool Every(ArrayItemFilterCallback itemFilterCallback) {
-            return false;
-        }
-
-        public Array Filter(ArrayFilterCallback filterCallback) {
-            return null;
-        }
-
-        public Array Filter(ArrayItemFilterCallback itemFilterCallback) {
-            return null;
-        }
-
-        public void ForEach(ArrayCallback callback) {
-        }
-
-        public void ForEach(ArrayItemCallback itemCallback) {
-        }
-
         public IEnumerator GetEnumerator() {
             return null;
         }
@@ -128,50 +106,10 @@ namespace System.Collections {
             return 0;
         }
 
-        public Array Map(ArrayMapCallback mapCallback) {
-            return null;
-        }
-
-        public Array Map(ArrayItemMapCallback mapItemCallback) {
-            return null;
-        }
-
         public static ArrayList Parse(string s) {
             return null;
         }
-
-        public object Reduce(ArrayReduceCallback callback) {
-            return null;
-        }
-
-        public object Reduce(ArrayReduceCallback callback, object initialValue) {
-            return null;
-        }
-
-        public object Reduce(ArrayItemReduceCallback callback) {
-            return null;
-        }
-
-        public object Reduce(ArrayItemReduceCallback callback, object initialValue) {
-            return null;
-        }
-
-        public object ReduceRight(ArrayReduceCallback callback) {
-            return null;
-        }
-
-        public object ReduceRight(ArrayReduceCallback callback, object initialValue) {
-            return null;
-        }
-
-        public object ReduceRight(ArrayItemReduceCallback callback) {
-            return null;
-        }
-
-        public object ReduceRight(ArrayItemReduceCallback callback, object initialValue) {
-            return null;
-        }
-
+        
         [ScriptAlias("ss.remove")]
         public bool Remove(object item) {
             return false;
@@ -198,19 +136,8 @@ namespace System.Collections {
         public Array Slice(int start, int end) {
             return null;
         }
-
-        public bool Some(ArrayFilterCallback filterCallback) {
-            return false;
-        }
-
-        public bool Some(ArrayItemFilterCallback itemFilterCallback) {
-            return false;
-        }
-
+        
         public void Sort() {
-        }
-
-        public void Sort(CompareCallback compareCallback) {
         }
 
         public void Splice(int start, int deleteCount) {

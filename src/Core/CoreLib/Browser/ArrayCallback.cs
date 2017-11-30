@@ -1,14 +1,13 @@
-// ArrayFilterCallback.cs
+// ArrayCallback.cs
 // Script#/Libraries/CoreLib
 // This source code is subject to terms and conditions of the Apache License, Version 2.0.
 //
-
 using System;
 using System.Runtime.CompilerServices;
 
-namespace System.Collections {
-
+namespace Browser
+{
     [ScriptIgnoreNamespace]
     [ScriptImport]
-    public delegate bool ArrayFilterCallback(object value, int index, Array array);
+    public delegate void ArrayCallback(object value, int index, Array array);
 }
