@@ -6,7 +6,7 @@
 using System;
 using System.Runtime.CompilerServices;
 
-namespace System.Testing {
+namespace Browser.Testing {
 
     [ScriptIgnoreNamespace]
     [ScriptImport]

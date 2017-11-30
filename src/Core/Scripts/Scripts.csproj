@@ -36,7 +36,7 @@
     <Content Include="System\String.js" />
     <Content Include="Runtime\Misc.js" />
     <Content Include="Runtime\Format.js" />
-    <Content Include="Runtime\Culture.js" />
+    <Content Include="System\Globalization\Culture.js" />
     <Content Include="System\Delegate.js" />
     <Content Include="System\EventArgs.js" />
     <Content Include="System\Text\StringBuilder.js" />

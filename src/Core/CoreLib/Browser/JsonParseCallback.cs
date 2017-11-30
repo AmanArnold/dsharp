@@ -3,11 +3,10 @@
 // This source code is subject to terms and conditions of the Apache License, Version 2.0.
 //
 
-using System;
 using System.Runtime.CompilerServices;
 
-namespace System.Serialization {
-
+namespace Browser.Serialization
+{
     /// <summary>
     /// A function that filters and transforms objects deserialized from JSON text.
     /// If the callback returns the same value, the member is left unmodified. If

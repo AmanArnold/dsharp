@@ -6,8 +6,8 @@
 using System;
 using System.Runtime.CompilerServices;
 
-namespace System.Serialization {
-
+namespace Browser.Serialization
+{
     [ScriptImport]
     [ScriptIgnoreNamespace]
     [ScriptName("JSON")]
@@ -122,8 +122,6 @@ namespace System.Serialization {
         /// <param name="callback">A callback to invoke for each value being serialized.</param>
         /// <param name="indentText">The string to use for indentation.</param>
         /// <returns>The serialized value as JSON text.</returns>
-        public static string Stringify(object o, JsonStringifyCallback callback, string indentText) {
-            return null;
-        }
+        public extern static string Stringify(object o, JsonStringifyCallback callback, string indentText);
     }
 }
