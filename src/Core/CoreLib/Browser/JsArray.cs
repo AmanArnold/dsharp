@@ -8,96 +8,67 @@ namespace Browser
     [ScriptName("Array")]
     public sealed class JsArray : Array
     {
-        public bool Every(ArrayFilterCallback filterCallback)
-        {
-            return false;
-        }
+        public extern Array Concat(params object[] objects);
 
-        public bool Every(ArrayItemFilterCallback itemFilterCallback)
-        {
-            return false;
-        }
+        public extern bool Every(ArrayFilterCallback filterCallback);
 
-        public Array Filter(ArrayFilterCallback filterCallback)
-        {
-            return null;
-        }
+        public extern bool Every(ArrayItemFilterCallback itemFilterCallback);
 
-        public Array Filter(ArrayItemFilterCallback itemFilterCallback)
-        {
-            return null;
-        }
+        public extern JsArray Filter(ArrayFilterCallback filterCallback);
 
-        public void ForEach(ArrayCallback callback)
-        {
-        }
+        public extern JsArray Filter(ArrayItemFilterCallback itemFilterCallback);
 
-        public void ForEach(ArrayItemCallback itemCallback)
-        {
-        }
+        public extern void ForEach(ArrayCallback callback);
 
-        public Array Map(ArrayMapCallback mapCallback)
-        {
-            return null;
-        }
+        public extern void ForEach(ArrayItemCallback itemCallback);
 
-        public Array Map(ArrayItemMapCallback mapItemCallback)
-        {
-            return null;
-        }
+        public extern Array GetRange(int index);
 
-        public object Reduce(ArrayReduceCallback callback)
-        {
-            return null;
-        }
+        public extern Array GetRange(int index, int count);
 
-        public object Reduce(ArrayReduceCallback callback, object initialValue)
-        {
-            return null;
-        }
+        public extern string Join();
 
-        public object Reduce(ArrayItemReduceCallback callback)
-        {
-            return null;
-        }
+        public extern string Join(string delimiter);
 
-        public object Reduce(ArrayItemReduceCallback callback, object initialValue)
-        {
-            return null;
-        }
+        public extern JsArray Map(ArrayMapCallback mapCallback);
 
-        public object ReduceRight(ArrayReduceCallback callback)
-        {
-            return null;
-        }
+        public extern JsArray Map(ArrayItemMapCallback mapItemCallback);
 
-        public object ReduceRight(ArrayReduceCallback callback, object initialValue)
-        {
-            return null;
-        }
+        [ScriptAlias("ss.array")]
+        public extern static Array Parse(string s);
 
-        public object ReduceRight(ArrayItemReduceCallback callback)
-        {
-            return null;
-        }
+        public extern object Reduce(ArrayReduceCallback callback);
 
-        public object ReduceRight(ArrayItemReduceCallback callback, object initialValue)
-        {
-            return null;
-        }
+        public extern object Reduce(ArrayReduceCallback callback, object initialValue);
 
-        public bool Some(ArrayFilterCallback filterCallback)
-        {
-            return false;
-        }
+        public extern object Reduce(ArrayItemReduceCallback callback);
 
-        public bool Some(ArrayItemFilterCallback itemFilterCallback)
-        {
-            return false;
-        }
+        public extern object Reduce(ArrayItemReduceCallback callback, object initialValue);
 
-        public void Sort(CompareCallback compareCallback)
-        {
-        }
+        public extern object ReduceRight(ArrayReduceCallback callback);
+
+        public extern object ReduceRight(ArrayReduceCallback callback, object initialValue);
+
+        public extern object ReduceRight(ArrayItemReduceCallback callback);
+
+        public extern object ReduceRight(ArrayItemReduceCallback callback, object initialValue);
+
+        public extern object Shift();
+
+        public extern JsArray Slice(int start);
+
+        public extern JsArray Slice(int start, int end);
+
+        public extern bool Some(ArrayFilterCallback filterCallback);
+
+        public extern bool Some(ArrayItemFilterCallback itemFilterCallback);
+
+        public extern void Sort(CompareCallback compareCallback);
+
+        public extern void Splice(int start, int deleteCount);
+
+        public extern void Splice(int start, int deleteCount, params object[] itemsToInsert);
+
+        public extern void Unshift(params object[] items);
     }
 }
