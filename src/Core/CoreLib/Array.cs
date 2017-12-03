@@ -39,9 +39,6 @@ namespace System
 
         public extern void Sort();
 
-        [ScriptAlias("ss.array")]
-        public extern static Array ToArray(object o);
-
         public extern static explicit operator ArrayList(Array array);
     }
 }

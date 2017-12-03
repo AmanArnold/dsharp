@@ -34,7 +34,7 @@ namespace Browser
 
         public extern JsArray Map(ArrayItemMapCallback mapItemCallback);
 
-        [ScriptAlias("ss.array")]
+        [ScriptAlias("ss.toArray")]
         public extern static Array Parse(string s);
 
         public extern object Reduce(ArrayReduceCallback callback);
@@ -68,6 +68,9 @@ namespace Browser
         public extern void Splice(int start, int deleteCount);
 
         public extern void Splice(int start, int deleteCount, params object[] itemsToInsert);
+
+        [ScriptAlias("ss.toArray")]
+        public extern static Array ToArray(object o);
 
         public extern void Unshift(params object[] items);
     }

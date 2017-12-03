@@ -107,7 +107,7 @@ namespace System
         [ScriptAlias("ss.insertString")]
         public extern string Insert(int index, string value);
 
-        [ScriptAlias("ss.emptyString")]
+        [ScriptAlias("ss.isEmptyString")]
         public static extern bool IsNullOrEmpty(string value);
 
         [ScriptAlias("ss.whitespace")]

@@ -115,6 +115,7 @@ var _typeNames = [
   RegExp, 'RegExp',
   Function, 'Function'
 ];
+
 function typeName(type) {
   if (!(type instanceof Function)) {
     type = type.constructor;
@@ -238,9 +239,4 @@ function createInstance(type, parameters) {
     var instance = Object.create(proto);
     proto.constructor.apply(instance, parameters);
     return instance;
-}
-
-function isArray(obj) {
-    return obj != undefined
-        && obj.constructor === Array;
 }

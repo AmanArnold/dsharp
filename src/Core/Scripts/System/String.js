@@ -7,12 +7,12 @@ function string(arg1, arg2) {
   return Array.prototype.join.call(arguments, '');
 }
 
-function emptyString(s) {
+function isEmptyString(s) {
   return !s || !s.length;
 }
 
 function whitespace(s) {
-  return emptyString(s) || !s.replace(/^\s*/, '').length;
+  return isEmptyString(s) || !s.replace(/^\s*/, '').length;
 }
 
 function compareStrings(s1, s2, ignoreCase) {
@@ -21,7 +21,7 @@ function compareStrings(s1, s2, ignoreCase) {
   return (s1 === s2) ? 0 : (s1 < s2) ? -1 : 1;
 }
 
-var _formatPlaceHolderRE = /(\{[^\}^\{]+\})/g;
+var _formatPlaceHolderRE = /(\{[^\}^\{]+\})/g;  
 var _formatters = {};
 
 function format(cultureOrFormat) {
@@ -75,19 +75,19 @@ function trimEnd(s, tc) {
   return s.replace(r, '');
 }
 function startsWith(s, prefix) {
-  if (emptyString(prefix)) {
+  if (isEmptyString(prefix)) {
     return true;
   }
-  if (emptyString(s) || (prefix.length > s.length)) {
+  if (isEmptyString(s) || (prefix.length > s.length)) {
     return false;
   }
   return s.substr(0, prefix.length) == prefix;
 }
 function endsWith(s, suffix) {
-  if (emptyString(suffix)) {
+  if (isEmptyString(suffix)) {
     return true;
   }
-  if (emptyString(s) || (suffix.length > s.length)) {
+  if (isEmptyString(s) || (suffix.length > s.length)) {
     return false;
   }
   return s.substr(-suffix.length) == suffix;

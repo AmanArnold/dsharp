@@ -102,7 +102,7 @@ namespace Browser
         /// Returns the current date and time.
         /// </summary>
         [ScriptField]
-        [ScriptAlias("ss.now()")]
+        [ScriptAlias("new Date()")]
         public static Date Now
         {
             get

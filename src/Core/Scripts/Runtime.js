@@ -12,6 +12,7 @@
         function _ss() {
             var versionNumber = "1.1.0";
 
+            #include "System\Array.js"
             #include "System\Primitives.js"
             #include "System\Delegate.js"
             #include "System\Guid.js"
@@ -83,22 +84,26 @@
                 value: value,
                 extend: extend,
                 keys: keys,
+                getValues: getValues,
                 keyCount: keyCount,
                 keyExists: keyExists,
                 clearKeys: clearKeys,
                 enumerate: enumerate,
-                array: toArray,
+                toArray: toArray,
                 remove: removeItem,
                 boolean: parseBoolean,
                 regexp: parseRegExp,
                 number: parseNumber,
+
+                //Date methods
                 date: parseDate,
                 truncate: truncate,
-                now: now,
                 today: today,
                 compareDates: compareDates,
+
+                //String methods
                 string: string,
-                emptyString: emptyString,
+                isEmptyString: isEmptyString,
                 whitespace: whitespace,
                 format: format,
                 compareStrings: compareStrings,
@@ -113,6 +118,7 @@
                 removeString: removeString,
                 replaceString: replaceString,
                 splitString: splitString,
+
                 bind: bind,
                 bindAdd: bindAdd,
                 bindSub: bindSub,

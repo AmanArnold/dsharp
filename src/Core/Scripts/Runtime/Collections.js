@@ -1,8 +1,7 @@
 // Collections
 
-function toArray(obj) {
-  return obj ? (typeof obj == 'string' ? JSON.parse('(' + obj + ')') : Array.prototype.slice.call(obj)) : null;
-}
+
+
 function removeItem(a, item) {
     var index = a.indexOf(item);
     return index >= 0 ? (a.splice(index, 1), true) : false;
@@ -71,4 +70,3 @@ function enumerate(o) {
   }
   return new Enumerator(o, keys(o));
 }
-

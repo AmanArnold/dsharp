@@ -79,10 +79,6 @@ function truncate(n) {
   return (n >= 0) ? Math.floor(n) : Math.ceil(n);
 }
 
-function now() {
-  return new Date();
-}
-
 function today() {
   var d = new Date();
   return new Date(d.getFullYear(), d.getMonth(), d.getDate());

@@ -17,6 +17,7 @@
   <ItemGroup>
     <Content Include="Loader.js" />
     <Content Include="Runtime.js" />
+    <Content Include="System\Array.js" />
     <Content Include="System\Collections\Generic\Interfaces.js" />
     <Content Include="System\Collections\Generic\Queue.js" />
     <Content Include="System\Collections\Generic\Stack.js" />
