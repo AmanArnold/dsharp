@@ -9,6 +9,10 @@ using System.Diagnostics;
 using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
+using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Microsoft.CodeAnalysis.Text;
 using ScriptSharp.CodeModel;
 using ScriptSharp.Compiler;
 using ScriptSharp.Generator;
@@ -24,6 +28,11 @@ namespace ScriptSharp
     /// The Script# compiler.
     /// </summary>
     public sealed class ScriptCompiler : IErrorHandler {
+
+        private static readonly CSharpParseOptions options = new CSharpParseOptions(
+                LanguageVersion.CSharp2,
+                DocumentationMode.None,
+                SourceCodeKind.Regular);
 
         private CompilerOptions _options;
         private IErrorHandler _errorHandler;
@@ -54,14 +63,29 @@ namespace ScriptSharp
             CodeModelProcessor validationProcessor = new CodeModelProcessor(codeModelValidator, _options);
 
             foreach (IStreamSource source in _options.Sources) {
-
+                CompilationUnitSyntax compilationNode = ParseWithRoslyn(source);
                 CompilationUnitNode compilationUnit = codeModelBuilder.BuildCodeModel(source);
+
                 if (compilationUnit != null) {
                     validationProcessor.Process(compilationUnit);
 
                     _compilationUnitList.Append(compilationUnit);
                 }
+
+                if(compilationNode != null)
+                {
+                    validationProcessor.Process((CSharpSyntaxNode)compilationNode);
+                }
             }
+        }
+
+        private CompilationUnitSyntax ParseWithRoslyn(IStreamSource source)
+        {
+            string filePath = source.FullName;
+            SourceText sourceText = SourceText.From(source.GetStream());
+
+            SyntaxTree syntaxTree = CSharpSyntaxTree.ParseText(sourceText, options);
+            return syntaxTree.GetCompilationUnitRoot();
         }
 
         private void BuildImplementation() {

@@ -6,6 +6,7 @@
 using System;
 using System.Diagnostics;
 using System.Reflection;
+using Microsoft.CodeAnalysis.CSharp;
 
 namespace ScriptSharp.CodeModel {
 
@@ -112,6 +113,10 @@ namespace ScriptSharp.CodeModel {
                 StartChildren(text);
                 EndChildren();
             }
+        }
+
+        internal void Process(CSharpSyntaxNode syntaxNode)
+        {
         }
     }
 }
