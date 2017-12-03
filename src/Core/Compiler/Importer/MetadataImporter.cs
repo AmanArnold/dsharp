@@ -4,20 +4,15 @@
 //
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
-using System.Reflection;
-using System.Runtime.InteropServices;
-using System.Text;
 using System.Linq;
-using ScriptSharp;
-using ScriptSharp.Importer.IL;
+using Mono.Cecil;
 using ScriptSharp.ScriptModel;
-using ICustomAttributeProvider = ScriptSharp.Importer.IL.ICustomAttributeProvider;
+using ICustomAttributeProvider = Mono.Cecil.ICustomAttributeProvider;
 
-namespace ScriptSharp.Importer {
+namespace ScriptSharp.Importer
+{
 
     internal sealed class MetadataImporter {
 

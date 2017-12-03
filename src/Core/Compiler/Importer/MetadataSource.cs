@@ -8,12 +8,10 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Text;
-using ScriptSharp;
-using ScriptSharp.Importer.IL;
+using Mono.Cecil;
 
-namespace ScriptSharp.Importer {
+namespace ScriptSharp.Importer
+{
 
     internal sealed class MetadataSource {
 

@@ -6,12 +6,11 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Reflection;
-using ScriptSharp.Importer.IL;
-using ScriptSharp.ScriptModel;
-using ICustomAttributeProvider = ScriptSharp.Importer.IL.ICustomAttributeProvider;
+using Mono.Cecil;
+using ICustomAttributeProvider = Mono.Cecil.ICustomAttributeProvider;
 
-namespace ScriptSharp.Importer {
+namespace ScriptSharp.Importer
+{
 
     internal static class MetadataHelpers {
 

@@ -4,7 +4,6 @@
 //
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -18,7 +17,8 @@ using ScriptSharp.ResourceModel;
 using ScriptSharp.ScriptModel;
 using ScriptSharp.Validator;
 
-namespace ScriptSharp {
+namespace ScriptSharp
+{
 
     /// <summary>
     /// The Script# compiler.
@@ -54,6 +54,7 @@ namespace ScriptSharp {
             CodeModelProcessor validationProcessor = new CodeModelProcessor(codeModelValidator, _options);
 
             foreach (IStreamSource source in _options.Sources) {
+
                 CompilationUnitNode compilationUnit = codeModelBuilder.BuildCodeModel(source);
                 if (compilationUnit != null) {
                     validationProcessor.Process(compilationUnit);
