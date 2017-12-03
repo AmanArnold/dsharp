@@ -2,20 +2,19 @@
 // Script#/Libraries/CoreLib
 // This source code is subject to terms and conditions of the Apache License, Version 2.0.
 //
-
 using System.ComponentModel;
 using System.Globalization;
 using System.Runtime.CompilerServices;
 
-namespace System {
-
+namespace System
+{
     /// <summary>
     /// Equivalent to the String type in Javascript.
     /// </summary>
     [ScriptIgnoreNamespace]
     [ScriptImport]
-    public sealed class String {
-
+    public sealed class String
+    {
         /// <summary>
         /// An empty zero-length string.
         /// </summary>
@@ -25,11 +24,7 @@ namespace System {
         /// The number of characters in the string.
         /// </summary>
         [ScriptField]
-        public int Length {
-            get {
-                return 0;
-            }
-        }
+        public extern int Length { get; }
 
         /// <summary>
         /// Retrieves the character at the specified position.
@@ -37,38 +32,22 @@ namespace System {
         /// <param name="index">The specified 0-based position.</param>
         /// <returns>The character within the string.</returns>
         [ScriptField]
-        public char this[int index] {
-            get {
-                return '\0';
-            }
-        }
-
-        
+        public extern char this[int index] { get; }
 
         [ScriptAlias("ss.compareStrings")]
-        public static int Compare(string s1, string s2) {
-            return 0;
-        }
+        public static extern int Compare(string s1, string s2);
 
         [ScriptAlias("ss.compareStrings")]
-        public static int Compare(string s1, string s2, bool ignoreCase) {
-            return 0;
-        }
+        public static extern int Compare(string s1, string s2, bool ignoreCase);
 
         [ScriptAlias("ss.string")]
-        public static string Concat(string s1, string s2) {
-            return null;
-        }
+        public static extern string Concat(string s1, string s2);
 
         [ScriptAlias("ss.string")]
-        public static string Concat(string s1, string s2, string s3) {
-            return null;
-        }
+        public static extern string Concat(string s1, string s2, string s3);
 
         [ScriptAlias("ss.string")]
-        public static string Concat(string s1, string s2, string s3, string s4) {
-            return null;
-        }
+        public static extern string Concat(string s1, string s2, string s3, string s4);
 
         /// <summary>
         /// Concatenates a set of individual strings into a single string.
@@ -76,221 +55,131 @@ namespace System {
         /// <param name="strings">The sequence of strings</param>
         /// <returns>The concatenated string.</returns>
         [ScriptAlias("ss.string")]
-        public static string Concat(params string[] strings) {
-            return null;
-        }
+        public static extern string Concat(params string[] strings);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         [ScriptAlias("ss.string")]
-        public static string Concat(object o1, object o2) {
-            return null;
-        }
+        public static extern string Concat(object o1, object o2);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         [ScriptAlias("ss.string")]
-        public static string Concat(object o1, object o2, object o3) {
-            return null;
-        }
+        public static extern string Concat(object o1, object o2, object o3);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         [ScriptAlias("ss.string")]
-        public static string Concat(object o1, object o2, object o3, object o4) {
-            return null;
-        }
+        public static extern string Concat(object o1, object o2, object o3, object o4);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         [ScriptAlias("ss.string")]
-        public static string Concat(params object[] o) {
-            return null;
-        }
+        public static extern string Concat(params object[] o);
 
         /// <summary>
         /// Determines if the string ends with the specified character.
         /// </summary>
-        /// <param name="ch">The character to test for.</param>
+        /// <param name="value">The character to test for.</param>
         /// <returns>true if the string ends with the character; false otherwise.</returns>
         [ScriptAlias("ss.endsWith")]
-        public bool EndsWith(char ch) {
-            return false;
-        }
+        public extern bool EndsWith(char value);
 
         /// <summary>
         /// Determines if the string ends with the specified substring or suffix.
         /// </summary>
-        /// <param name="suffix">The string to test for.</param>
+        /// <param name="value">The string to test for.</param>
         /// <returns>true if the string ends with the suffix; false otherwise.</returns>
         [ScriptAlias("ss.endsWith")]
-        public bool EndsWith(string suffix) {
-            return false;
-        }
+        public extern bool EndsWith(string value);
 
         [ScriptAlias("ss.format")]
-        public static string Format(string format, params object[] values) {
-            return null;
-        }
+        public static extern string Format(string format, params object[] values);
 
         [ScriptAlias("ss.format")]
-        public static string Format(CultureInfo culture, string format, params object[] values) {
-            return null;
-        }
+        [Obsolete("This is a non standard interface. Please migrate away")]
+        public static extern string Format(CultureInfo culture, string format, params object[] values);
 
-        public int IndexOf(char ch) {
-            return 0;
-        }
+        public extern int IndexOf(char value);
 
-        public int IndexOf(string subString) {
-            return 0;
-        }
+        public extern int IndexOf(string value);
 
-        public int IndexOf(char ch, int startIndex) {
-            return 0;
-        }
+        public extern int IndexOf(char value, int startIndex);
 
-        public int IndexOf(string subString, int startIndex) {
-            return 0;
-        }
+        public extern int IndexOf(string value, int startIndex);
 
         [ScriptAlias("ss.insertString")]
-        public string Insert(int index, string value) {
-            return null;
-        }
+        public extern string Insert(int index, string value);
 
         [ScriptAlias("ss.emptyString")]
-        public static bool IsNullOrEmpty(string s) {
-            return false;
-        }
+        public static extern bool IsNullOrEmpty(string value);
 
         [ScriptAlias("ss.whitespace")]
-        public static bool IsNullOrWhiteSpace(string s) {
-            return false;
-        }
+        public static extern bool IsNullOrWhiteSpace(string value);
 
-        public int LastIndexOf(Char ch) {
-            return 0;
-        }
+        public extern int LastIndexOf(char value);
 
-        public int LastIndexOf(string subString) {
-            return 0;
-        }
+        public extern int LastIndexOf(string value);
 
-        public int LastIndexOf(char ch, int startIndex) {
-            return 0;
-        }
+        public extern int LastIndexOf(char value, int startIndex);
 
-        public int LastIndexOf(string subString, int startIndex) {
-            return 0;
-        }
-
+        public extern int LastIndexOf(string value, int startIndex);
 
         [ScriptAlias("ss.padLeft")]
-        public string PadLeft(int totalWidth) {
-            return null;
-        }
+        public extern string PadLeft(int totalWidth);
 
         [ScriptAlias("ss.padLeft")]
-        public string PadLeft(int totalWidth, char ch) {
-            return null;
-        }
+        public extern string PadLeft(int totalWidth, char paddingChar);
 
         [ScriptAlias("ss.padRight")]
-        public string PadRight(int totalWidth) {
-            return null;
-        }
+        public extern string PadRight(int totalWidth);
 
         [ScriptAlias("ss.padRight")]
-        public string PadRight(int totalWidth, char ch) {
-            return null;
-        }
+        public extern string PadRight(int totalWidth, char paddingChar);
 
         [ScriptAlias("ss.removeString")]
-        public string Remove(int index) {
-            return null;
-        }
+        public extern string Remove(int index);
 
         [ScriptAlias("ss.removeString")]
-        public string Remove(int index, int count) {
-            return null;
-        }
+        public extern string Remove(int index, int count);
 
         [ScriptAlias("ss.replaceString")]
-        public string Replace(string oldText, string replaceText) {
-            return null;
-        }
+        public extern string Replace(string oldValue, string newValue);
 
-        public string[] Split(char ch) {
-            return null;
-        }
+        [ScriptAlias("ss.splitString")]
+        public extern string[] Split(params char[] separator);
 
-        public string[] Split(string separator) {
-            return null;
-        }
-
-        public string[] Split(char ch, int limit) {
-            return null;
-        }
-
-        public string[] Split(string separator, int limit) {
-            return null;
-        }
+        [ScriptAlias("ss.splitString")]
+        public extern string[] Split(params string[] separator);
 
         [ScriptAlias("ss.startsWith")]
-        public bool StartsWith(char ch) {
-            return false;
-        }
+        public extern bool StartsWith(char value);
 
         [ScriptAlias("ss.startsWith")]
-        public bool StartsWith(string prefix) {
-            return false;
-        }
+        public extern bool StartsWith(string prefix);
 
-        public string Substring(int startIndex) {
-            return null;
-        }
+        public extern string Substring(int startIndex);
 
-        public string Substring(int startIndex, int endIndex) {
-            return null;
-        }
+        public extern string Substring(int startIndex, int endIndex);
 
         [ScriptName("toLowerCase")]
-        public string ToLower()
-        {
-            return null;
-        }
+        public extern string ToLower();
 
         [ScriptName("toUpperCase")]
-        public string ToUpper()
-        {
-            return null;
-        }
+        public extern string ToUpper();
 
         [ScriptAlias("ss.trim")]
-        public string Trim() {
-            return null;
-        }
+        public extern string Trim();
 
         [ScriptAlias("ss.trim")]
-        public string Trim(params char[] trimCharacters) {
-            return null;
-        }
+        public extern string Trim(params char[] trimCharacters);
 
         [ScriptAlias("ss.trimEnd")]
-        public string TrimEnd(params char[] trimCharacters) {
-            return null;
-        }
+        public extern string TrimEnd(params char[] trimCharacters);
 
         [ScriptAlias("ss.trimStart")]
-        public string TrimStart(params char[] trimCharacters) {
-            return null;
-        }
+        public extern string TrimStart(params char[] trimCharacters);
 
         /// <internalonly />
-        public static bool operator ==(string s1, string s2) {
-            return false;
-        }
+        public extern static bool operator ==(string s1, string s2);
 
         /// <internalonly />
-        public static bool operator !=(string s1, string s2) {
-            return false;
-        }
+        public extern static bool operator !=(string s1, string s2);
     }
 }

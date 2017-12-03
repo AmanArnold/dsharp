@@ -112,6 +112,7 @@
                 insertString: insertString,
                 removeString: removeString,
                 replaceString: replaceString,
+                splitString: splitString,
                 bind: bind,
                 bindAdd: bindAdd,
                 bindSub: bindSub,

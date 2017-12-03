@@ -116,4 +116,10 @@ function insertString(s, index, value) {
 function replaceString(s, oldValue, newValue) {
   return s.split(oldValue).join(newValue || '');
 }
-
+function splitString(value, separators) {
+    if (!value || !isArray(separators)) {
+        return value;
+    }
+    var splitRegex = new RegExp(separators.join('|'), 'g');
+    return value.split(splitRegex);
+}

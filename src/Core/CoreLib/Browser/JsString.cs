@@ -84,6 +84,11 @@ namespace Browser
 
         public extern string[] Split(JsRegExp regex, int limit);
 
+
+        public extern string[] Split(char separator, int limit);
+
+        public extern string[] Split(string separator, int limit);
+
         public extern string Substr(int startIndex);
 
         public extern string Substr(int startIndex, int length);
