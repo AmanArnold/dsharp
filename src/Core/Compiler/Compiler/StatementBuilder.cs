@@ -37,12 +37,14 @@ namespace ScriptSharp.Compiler {
             try {
                 statement = BuildStatementCore(statementNode);
             }
-            catch {
+            catch(Exception e) {
+                Debugger.Launch();
                 string location = statementNode.Token.Location;
                 string message = "Check that your C# source compiles and that you are not using an unsupported feature. " +
                                  "Common things to check for include use of fully-qualified names " +
                                  "(use a using statement to import namespaces instead) or " +
-                                 "accessing private members of a type from a static member of the same type.";
+                                 "accessing private members of a type from a static member of the same type." +
+                                 e.Message;
 
                 statement = new ErrorStatement(message, location);
                 _errorHandler.ReportError(message, location);

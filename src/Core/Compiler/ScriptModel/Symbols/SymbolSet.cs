@@ -139,7 +139,7 @@ namespace ScriptSharp.ScriptModel {
         private TypeSymbol CreateArrayTypeCore(TypeSymbol itemTypeSymbol) {
             TypeSymbol arrayTypeSymbol =
                 (TypeSymbol)((ISymbolTable)_systemNamespace).FindSymbol("Array", null, SymbolFilter.Types);
-            Debug.Assert(arrayTypeSymbol != null);
+            AssertHelper.Assert(arrayTypeSymbol != null);
 
             TypeSymbol specificArrayTypeSymbol = new ClassSymbol("Array", _systemNamespace);
             foreach (MemberSymbol memberSymbol in arrayTypeSymbol.Members) {
@@ -448,7 +448,7 @@ namespace ScriptSharp.ScriptModel {
         }
 
         public Dictionary<string, ResXItem> GetResources(string name) {
-            Debug.Assert(String.IsNullOrEmpty(name) == false);
+            AssertHelper.Assert(String.IsNullOrEmpty(name) == false);
 
             Dictionary<string, ResXItem> resourceTable;
             if (_resources.TryGetValue(name, out resourceTable)) {
@@ -525,6 +525,7 @@ namespace ScriptSharp.ScriptModel {
                     break;
                 case IntrinsicType.Date:
                     mappedTypeName = "Date";
+                    mappedNamespace = "Browser";
                     break;
                 case IntrinsicType.Decimal:
                     mappedTypeName = "Decimal";
@@ -537,6 +538,7 @@ namespace ScriptSharp.ScriptModel {
                     break;
                 case IntrinsicType.Function:
                     mappedTypeName = "Function";
+                    mappedNamespace = "Browser";
                     break;
                 case IntrinsicType.Void:
                     mappedTypeName = "Void";
@@ -545,8 +547,8 @@ namespace ScriptSharp.ScriptModel {
                     mappedTypeName = "Array";
                     break;
                 case IntrinsicType.Dictionary:
-                    mappedTypeName = "Dictionary";
-                    mappedNamespace = "System.Collections";
+                    mappedTypeName = "JsDictionary";
+                    mappedNamespace = "Browser";
                     break;
                 case IntrinsicType.GenericList:
                     mappedTypeName = "List`1";
@@ -571,12 +573,15 @@ namespace ScriptSharp.ScriptModel {
                     break;
                 case IntrinsicType.Script:
                     mappedTypeName = "Script";
+                    mappedNamespace = "Browser";
                     break;
                 case IntrinsicType.Number:
                     mappedTypeName = "Number";
+                    mappedNamespace = "Browser";
                     break;
                 case IntrinsicType.Arguments:
                     mappedTypeName = "Arguments";
+                    mappedNamespace = "Browser";
                     break;
                 case IntrinsicType.Nullable:
                     mappedTypeName = "Nullable`1";
@@ -589,12 +594,12 @@ namespace ScriptSharp.ScriptModel {
             NamespaceSymbol ns = _systemNamespace;
             if (mappedNamespace != null) {
                 ns = GetNamespace(mappedNamespace);
-                Debug.Assert(ns != null);
+                AssertHelper.Assert(ns != null);
             }
 
             if (mappedTypeName != null) {
                 TypeSymbol typeSymbol = (TypeSymbol)((ISymbolTable)ns).FindSymbol(mappedTypeName, null, SymbolFilter.Types);
-                Debug.Assert(typeSymbol != null);
+                AssertHelper.Assert(typeSymbol != null, mappedTypeName);
 
                 return typeSymbol;
             }
@@ -672,7 +677,7 @@ namespace ScriptSharp.ScriptModel {
                 ArrayTypeNode arrayTypeNode = (ArrayTypeNode)node;
 
                 TypeSymbol itemTypeSymbol = ResolveType(arrayTypeNode.BaseType, symbolTable, contextSymbol);
-                Debug.Assert(itemTypeSymbol != null);
+                AssertHelper.Assert(itemTypeSymbol != null);
 
                 return CreateArrayTypeSymbol(itemTypeSymbol);
             }
@@ -688,12 +693,12 @@ namespace ScriptSharp.ScriptModel {
                 }
 
                 TypeSymbol resolvedSymbol = CreateGenericTypeSymbol(templateType, typeArguments);
-                Debug.Assert(resolvedSymbol != null);
+                AssertHelper.Assert(resolvedSymbol != null);
 
                 return resolvedSymbol;
             }
             else {
-                Debug.Assert(node is NameNode);
+                AssertHelper.Assert(node is NameNode);
                 NameNode nameNode = (NameNode)node;
 
                 return (TypeSymbol)symbolTable.FindSymbol(nameNode.Name, contextSymbol, SymbolFilter.Types);
@@ -701,15 +706,15 @@ namespace ScriptSharp.ScriptModel {
         }
 
         public void SetComments(XmlDocument docComments) {
-            Debug.Assert(_docComments == null);
-            Debug.Assert(docComments != null);
+            AssertHelper.Assert(_docComments == null);
+            AssertHelper.Assert(docComments != null);
 
             _docComments = docComments;
         }
 
         public void SetEntryPoint(MemberSymbol entryPoint) {
-            Debug.Assert(_entryPoint == null);
-            Debug.Assert(entryPoint != null);
+            AssertHelper.Assert(_entryPoint == null);
+            AssertHelper.Assert(entryPoint != null);
 
             _entryPoint = entryPoint;
         }
@@ -731,7 +736,7 @@ namespace ScriptSharp.ScriptModel {
 
             if (name.IndexOf('.') > 0) {
                 int nameIndex = name.LastIndexOf('.') + 1;
-                Debug.Assert(nameIndex < name.Length);
+                AssertHelper.Assert(nameIndex < name.Length);
 
                 string namespaceName = name.Substring(0, nameIndex - 1);
                 name = name.Substring(nameIndex);
@@ -742,7 +747,7 @@ namespace ScriptSharp.ScriptModel {
                 }
             }
             else {
-                Debug.Assert(context != null);
+                AssertHelper.Assert(context != null);
 
                 TypeSymbol typeSymbol = context as TypeSymbol;
                 if (typeSymbol == null) {
@@ -757,7 +762,7 @@ namespace ScriptSharp.ScriptModel {
                     }
                 }
 
-                Debug.Assert(typeSymbol != null);
+                AssertHelper.Assert(typeSymbol != null);
                 if (typeSymbol == null) {
                     return null;
                 }
@@ -765,7 +770,7 @@ namespace ScriptSharp.ScriptModel {
                 bool systemNamespaceChecked = false;
 
                 NamespaceSymbol containerNamespace = (NamespaceSymbol)typeSymbol.Parent;
-                Debug.Assert(containerNamespace != null);
+                AssertHelper.Assert(containerNamespace != null);
 
                 symbol = ((ISymbolTable)containerNamespace).FindSymbol(name, /* context */ null, SymbolFilter.Types);
                 if (containerNamespace == _systemNamespace) {

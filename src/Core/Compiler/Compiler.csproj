@@ -52,6 +52,7 @@
     <Compile Include="..\ResXParser.cs">
       <Link>ResXParser.cs</Link>
     </Compile>
+    <Compile Include="Class1.cs" />
     <Compile Include="Generator\NamespaceTable.cs" />
     <Compile Include="IStreamSourceResolver.cs" />
     <Compile Include="ScriptModel\Statements\UsingStatement.cs" />

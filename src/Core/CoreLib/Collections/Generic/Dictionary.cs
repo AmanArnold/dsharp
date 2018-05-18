@@ -11,7 +11,7 @@ namespace System.Collections.Generic
     /// </summary>
     [ScriptIgnoreNamespace]
     [ScriptImport]
-    [ScriptName("Dictionary")]
+    [ScriptName("Dictionary`1")]
     public sealed class Dictionary<TKey, TValue> : IDictionary<TKey, TValue>, IReadOnlyDictionary<TKey, TValue>
     {
         public extern Dictionary(IDictionary<TKey, TValue> dictionary);

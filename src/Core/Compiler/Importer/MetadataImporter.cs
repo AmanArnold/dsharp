@@ -81,7 +81,7 @@ namespace ScriptSharp.Importer {
 
                         ImportPseudoMembers(PseudoClassMembers.Object, (ClassSymbol)typeSymbol);
                     }
-                    else if (typeSymbol.Name.Equals("Dictionary", StringComparison.Ordinal)) {
+                    else if (typeSymbol.Name.Equals("JsDictionary", StringComparison.Ordinal)) {
                         // The Dictionary class contains static methods at runtime, rather
                         // than instance methods.
 
@@ -515,6 +515,7 @@ namespace ScriptSharp.Importer {
             // Import pseudo members that go on the class but aren't defined in mscorlib.dll
             // These are meant to be used by internal compiler-generated transformations etc.
             // and aren't meant to be referenced directly in C# code.
+            NamespaceSymbol namespaceSymbol = _symbols.GetNamespace("Browser");
 
             if (memberSet == PseudoClassMembers.Script) {
                 TypeSymbol objectType = (TypeSymbol)((ISymbolTable)_symbols.SystemNamespace).FindSymbol("Object", null, SymbolFilter.Types);
@@ -526,7 +527,7 @@ namespace ScriptSharp.Importer {
                 TypeSymbol boolType = (TypeSymbol)((ISymbolTable)_symbols.SystemNamespace).FindSymbol("Boolean", null, SymbolFilter.Types);
                 Debug.Assert(boolType != null);
 
-                TypeSymbol dateType = (TypeSymbol)((ISymbolTable)_symbols.SystemNamespace).FindSymbol("Date", null, SymbolFilter.Types);
+                TypeSymbol dateType = (TypeSymbol)((ISymbolTable)namespaceSymbol).FindSymbol("Date", null, SymbolFilter.Types);
                 Debug.Assert(dateType != null);
 
                 // Enumerate - IEnumerable.GetEnumerator gets mapped to this

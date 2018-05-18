@@ -4,6 +4,7 @@
 using System;
 using System.Collections;
 using System.Runtime.CompilerServices;
+using Browser;
 
 [assembly: ScriptAssembly("basic")]
 [assembly: AssemblyDescription("Simple code generation test.")]
@@ -104,7 +105,7 @@ namespace Basic {
             Echo(((Button)sender).text + " was clicked as well!");
         }
 
-        public static void Main(Dictionary args) {
+        public static void Main(JsDictionary args) {
             App theApp = new App();
 
             theApp._btn1.performClick();

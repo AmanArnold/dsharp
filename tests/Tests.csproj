@@ -43,17 +43,6 @@
     </Reference>
     <Reference Include="System.XML" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="ScriptSharp, Version=0.7.0.0, Culture=neutral, PublicKeyToken=8fc0e3af5abcb6c4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\bin\Debug\ScriptSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="ScriptSharp.Build, Version=0.7.0.0, Culture=neutral, PublicKeyToken=8fc0e3af5abcb6c4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\bin\Debug\ScriptSharp.Build.dll</HintPath>
-    </Reference>
-    <Reference Include="ScriptSharp.Testing">
-      <HintPath>..\bin\Debug\ScriptSharp.Testing.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <CodeAnalysisDependentAssemblyPaths Condition=" '$(VS100COMNTOOLS)' != '' " Include="$(VS100COMNTOOLS)..\IDE\PrivateAssemblies">
@@ -776,6 +765,24 @@
     <Content Include="TestCases\Basic\Resources\Strings2.resx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\src\Core\Build\Build.csproj">
+      <Project>{be1e0a21-f6c0-4698-b405-66fc2bb289f4}</Project>
+      <Name>Build</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\src\Core\Compiler\Compiler.csproj">
+      <Project>{9f14036f-673f-418e-b817-7e2289d7f3f6}</Project>
+      <Name>Compiler</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\src\Tools\Deployment\Deployment.csproj">
+      <Project>{9d59077d-1a05-4d6c-a1a4-fb748d200578}</Project>
+      <Name>Deployment</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\src\Tools\Testing\Testing.csproj">
+      <Project>{31456150-1093-407f-9231-58d0f663945d}</Project>
+      <Name>Testing</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -21,7 +21,7 @@ namespace ScriptSharp.Validator {
             //       This is because validators don't have a reference to the SymbolSet.
 
             NameNode typeNode = newNode.TypeReference as NameNode;
-            if ((typeNode != null) && (typeNode.Name.Equals("Dictionary"))) {
+            if ((typeNode != null) && (typeNode.Name.Equals("JsDictionary"))) {
                 if (newNode.Arguments != null) {
                     Debug.Assert(newNode.Arguments is ExpressionListNode);
                     ParseNodeList arguments = ((ExpressionListNode)newNode.Arguments).Expressions;

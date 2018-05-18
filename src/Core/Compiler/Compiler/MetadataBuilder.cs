@@ -4,18 +4,14 @@
 //
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Xml;
-using ScriptSharp;
 using ScriptSharp.CodeModel;
-using ScriptSharp.ResourceModel;
 using ScriptSharp.ScriptModel;
 
-namespace ScriptSharp.Compiler {
-
+namespace ScriptSharp.Compiler
+{
     internal sealed class MetadataBuilder {
 
         private IErrorHandler _errorHandler;
@@ -25,7 +21,7 @@ namespace ScriptSharp.Compiler {
         private ISymbolTable _symbolTable;
 
         public MetadataBuilder(IErrorHandler errorHandler) {
-            Debug.Assert(errorHandler != null);
+            AssertHelper.Assert(errorHandler != null);
             _errorHandler = errorHandler;
         }
 
@@ -48,33 +44,33 @@ namespace ScriptSharp.Compiler {
                 string path = null;
                 bool delayLoad = false;
 
-                Debug.Assert((attribNode.Arguments.Count != 0) && (attribNode.Arguments[0].NodeType == ParseNodeType.Literal));
-                Debug.Assert(((LiteralNode)attribNode.Arguments[0]).Value is string);
+                AssertHelper.Assert((attribNode.Arguments.Count != 0) && (attribNode.Arguments[0].NodeType == ParseNodeType.Literal));
+                AssertHelper.Assert(((LiteralNode)attribNode.Arguments[0]).Value is string);
                 name = (string)((LiteralNode)attribNode.Arguments[0]).Value;
 
                 if (attribNode.Arguments.Count > 1) {
                     for (int i = 1; i < attribNode.Arguments.Count; i++) {
-                        Debug.Assert(attribNode.Arguments[1] is BinaryExpressionNode);
+                        AssertHelper.Assert(attribNode.Arguments[1] is BinaryExpressionNode);
 
                         BinaryExpressionNode propExpression = (BinaryExpressionNode)attribNode.Arguments[1];
-                        Debug.Assert((propExpression.LeftChild.NodeType == ParseNodeType.Name));
+                        AssertHelper.Assert((propExpression.LeftChild.NodeType == ParseNodeType.Name));
 
                         string propName = ((NameNode)propExpression.LeftChild).Name;
                         if (String.CompareOrdinal(propName, "Identifier") == 0) {
-                            Debug.Assert(propExpression.RightChild.NodeType == ParseNodeType.Literal);
-                            Debug.Assert(((LiteralNode)propExpression.RightChild).Value is string);
+                            AssertHelper.Assert(propExpression.RightChild.NodeType == ParseNodeType.Literal);
+                            AssertHelper.Assert(((LiteralNode)propExpression.RightChild).Value is string);
 
                             identifier = (string)((LiteralNode)propExpression.RightChild).Value;
                         }
                         if (String.CompareOrdinal(propName, "Path") == 0) {
-                            Debug.Assert(propExpression.RightChild.NodeType == ParseNodeType.Literal);
-                            Debug.Assert(((LiteralNode)propExpression.RightChild).Value is string);
+                            AssertHelper.Assert(propExpression.RightChild.NodeType == ParseNodeType.Literal);
+                            AssertHelper.Assert(((LiteralNode)propExpression.RightChild).Value is string);
 
                             path = (string)((LiteralNode)propExpression.RightChild).Value;
                         }
                         else if (String.CompareOrdinal(propName, "DelayLoad") == 0) {
-                            Debug.Assert(propExpression.RightChild.NodeType == ParseNodeType.Literal);
-                            Debug.Assert(((LiteralNode)propExpression.RightChild).Value is bool);
+                            AssertHelper.Assert(propExpression.RightChild.NodeType == ParseNodeType.Literal);
+                            AssertHelper.Assert(((LiteralNode)propExpression.RightChild).Value is bool);
 
                             delayLoad = (bool)((LiteralNode)propExpression.RightChild).Value;
                         }
@@ -112,7 +108,7 @@ namespace ScriptSharp.Compiler {
         }
 
         private EnumerationFieldSymbol BuildEnumField(EnumerationFieldNode fieldNode, TypeSymbol typeSymbol) {
-            Debug.Assert(typeSymbol is EnumerationSymbol);
+            AssertHelper.Assert(typeSymbol is EnumerationSymbol);
             EnumerationSymbol enumSymbol = (EnumerationSymbol)typeSymbol;
 
             TypeSymbol fieldTypeSymbol;
@@ -131,7 +127,7 @@ namespace ScriptSharp.Compiler {
 
         private EventSymbol BuildEvent(EventDeclarationNode eventNode, TypeSymbol typeSymbol) {
             TypeSymbol handlerType = typeSymbol.SymbolSet.ResolveType(eventNode.Type, _symbolTable, typeSymbol);
-            Debug.Assert(handlerType != null);
+            AssertHelper.Assert(handlerType != null);
 
             if (handlerType != null) {
                 EventSymbol eventSymbol = new EventSymbol(eventNode.Name, typeSymbol, handlerType);
@@ -167,7 +163,7 @@ namespace ScriptSharp.Compiler {
 
         private FieldSymbol BuildField(FieldDeclarationNode fieldNode, TypeSymbol typeSymbol) {
             TypeSymbol fieldType = typeSymbol.SymbolSet.ResolveType(fieldNode.Type, _symbolTable, typeSymbol);
-            Debug.Assert(fieldType != null);
+            AssertHelper.Assert(fieldType != null);
 
             if (fieldType != null) {
                 FieldSymbol symbol = new FieldSymbol(fieldNode.Name, typeSymbol, fieldType);
@@ -182,7 +178,7 @@ namespace ScriptSharp.Compiler {
                 }
 
                 if (fieldNode.NodeType == ParseNodeType.ConstFieldDeclaration) {
-                    Debug.Assert(fieldNode.Initializers.Count == 1);
+                    AssertHelper.Assert(fieldNode.Initializers.Count == 1);
 
                     VariableInitializerNode initializer = (VariableInitializerNode)fieldNode.Initializers[0];
                     if ((initializer.Value != null) && (initializer.Value.NodeType == ParseNodeType.Literal)) {
@@ -202,7 +198,7 @@ namespace ScriptSharp.Compiler {
 
         private IndexerSymbol BuildIndexer(IndexerDeclarationNode indexerNode, TypeSymbol typeSymbol) {
             TypeSymbol indexerType = typeSymbol.SymbolSet.ResolveType(indexerNode.Type, _symbolTable, typeSymbol);
-            Debug.Assert(indexerType != null);
+            AssertHelper.Assert(indexerType != null);
 
             if (indexerType != null) {
                 IndexerSymbol indexer = new IndexerSymbol(typeSymbol, indexerType);
@@ -225,7 +221,7 @@ namespace ScriptSharp.Compiler {
 
                 indexer.SetImplementationState(implFlags);
 
-                Debug.Assert(indexerNode.Parameters.Count != 0);
+                AssertHelper.Assert(indexerNode.Parameters.Count != 0);
                 foreach (ParameterNode parameterNode in indexerNode.Parameters) {
                     ParameterSymbol paramSymbol = BuildParameter(parameterNode, indexer);
                     if (paramSymbol != null) {
@@ -306,11 +302,11 @@ namespace ScriptSharp.Compiler {
                 bool preserveName = false;
 
                 foreach (ParseNode argNode in nameAttribute.Arguments) {
-                    Debug.Assert((argNode.NodeType == ParseNodeType.Literal) ||
+                    AssertHelper.Assert((argNode.NodeType == ParseNodeType.Literal) ||
                                  (argNode.NodeType == ParseNodeType.BinaryExpression));
 
                     if (argNode.NodeType == ParseNodeType.Literal) {
-                        Debug.Assert(((LiteralNode)argNode).Value is string);
+                        AssertHelper.Assert(((LiteralNode)argNode).Value is string);
                         name = (string)((LiteralNode)argNode).Value;
                         preserveName = preserveCase = true;
                         break;
@@ -348,7 +344,7 @@ namespace ScriptSharp.Compiler {
                 DelegateTypeNode delegateNode = (DelegateTypeNode)typeSymbol.ParseContext;
 
                 TypeSymbol returnType = typeSymbol.SymbolSet.ResolveType(delegateNode.ReturnType, _symbolTable, typeSymbol);
-                Debug.Assert(returnType != null);
+                AssertHelper.Assert(returnType != null);
 
                 if (returnType != null) {
                     MethodSymbol invokeMethod = new MethodSymbol("Invoke", typeSymbol, returnType, MemberVisibility.Public);
@@ -437,8 +433,8 @@ namespace ScriptSharp.Compiler {
         }
 
         public ICollection<TypeSymbol> BuildMetadata(ParseNodeList compilationUnits, SymbolSet symbols, CompilerOptions options) {
-            Debug.Assert(compilationUnits != null);
-            Debug.Assert(symbols != null);
+            AssertHelper.Assert(compilationUnits != null);
+            AssertHelper.Assert(symbols != null);
 
             _symbols = symbols;
             _symbolTable = symbols;
@@ -473,7 +469,7 @@ namespace ScriptSharp.Compiler {
                                 }
                             }
                             else {
-                                Debug.Assert(usingNode is UsingAliasNode);
+                                AssertHelper.Assert(usingNode is UsingAliasNode);
                                 if (aliases == null) {
                                     aliases = new Dictionary<string, string>();
                                 }
@@ -627,7 +623,7 @@ namespace ScriptSharp.Compiler {
             }
             else {
                 TypeSymbol returnType = typeSymbol.SymbolSet.ResolveType(methodNode.Type, _symbolTable, typeSymbol);
-                Debug.Assert(returnType != null);
+                AssertHelper.Assert(returnType != null);
 
                 if (returnType != null) {
                     method = new MethodSymbol(methodNode.Name, typeSymbol, returnType);
@@ -640,8 +636,8 @@ namespace ScriptSharp.Compiler {
                                 conditions = new List<string>();
                             }
 
-                            Debug.Assert(attrNode.Arguments[0] is LiteralNode);
-                            Debug.Assert(((LiteralNode)attrNode.Arguments[0]).Value is string);
+                            AssertHelper.Assert(attrNode.Arguments[0] is LiteralNode);
+                            AssertHelper.Assert(((LiteralNode)attrNode.Arguments[0]).Value is string);
 
                             conditions.Add((string)((LiteralNode)attrNode.Arguments[0]).Value);
                         }
@@ -654,8 +650,8 @@ namespace ScriptSharp.Compiler {
                     if (typeSymbol.IsApplicationType == false) {
                         foreach (AttributeNode attrNode in methodNode.Attributes) {
                             if (attrNode.TypeName.Equals("ScriptMethod", StringComparison.Ordinal)) {
-                                Debug.Assert(attrNode.Arguments[0] is LiteralNode);
-                                Debug.Assert(((LiteralNode)attrNode.Arguments[0]).Value is string);
+                                AssertHelper.Assert(attrNode.Arguments[0] is LiteralNode);
+                                AssertHelper.Assert(((LiteralNode)attrNode.Arguments[0]).Value is string);
 
                                 method.SetSelector((string)((LiteralNode)attrNode.Arguments[0]).Value);
                                 break;
@@ -705,8 +701,8 @@ namespace ScriptSharp.Compiler {
 
         private bool IsGenericTypeParameter(MethodDeclarationNode methodNode, ParameterNode parameterNode)
         {
-            Debug.Assert(methodNode != null, "methodNode can't be null when resolving a generic parameter");
-            Debug.Assert(parameterNode != null, "parameterNode can't be null when resolving a generic parameter");
+            AssertHelper.Assert(methodNode != null, "methodNode can't be null when resolving a generic parameter");
+            AssertHelper.Assert(parameterNode != null, "parameterNode can't be null when resolving a generic parameter");
 
             if(methodNode.TypeParameters == null || methodNode.TypeParameters.Count <= 0)
             {
@@ -738,7 +734,7 @@ namespace ScriptSharp.Compiler {
             if(parameterType == null)
             {
                 parameterType = methodSymbol.SymbolSet.ResolveType(parameterNode.Type, _symbolTable, methodSymbol);
-                Debug.Assert(parameterType != null);
+                AssertHelper.Assert(parameterType != null);
             }
 
             if (parameterType != null) {
@@ -750,7 +746,7 @@ namespace ScriptSharp.Compiler {
 
         private ParameterSymbol BuildParameter(ParameterNode parameterNode, IndexerSymbol indexerSymbol) {
             TypeSymbol parameterType = indexerSymbol.SymbolSet.ResolveType(parameterNode.Type, _symbolTable, indexerSymbol);
-            Debug.Assert(parameterType != null);
+            AssertHelper.Assert(parameterType != null);
 
             if (parameterType != null) {
                 return new ParameterSymbol(parameterNode.Name, indexerSymbol, parameterType, ParameterMode.In);
@@ -761,7 +757,7 @@ namespace ScriptSharp.Compiler {
 
         private PropertySymbol BuildProperty(PropertyDeclarationNode propertyNode, TypeSymbol typeSymbol) {
             TypeSymbol propertyType = typeSymbol.SymbolSet.ResolveType(propertyNode.Type, _symbolTable, typeSymbol);
-            Debug.Assert(propertyType != null);
+            AssertHelper.Assert(propertyType != null);
 
             if (propertyType != null) {
                 PropertySymbol property = new PropertySymbol(propertyNode.Name, typeSymbol, propertyType);
@@ -794,7 +790,7 @@ namespace ScriptSharp.Compiler {
             }
 
             TypeSymbol fieldType = typeSymbol.SymbolSet.ResolveType(propertyNode.Type, _symbolTable, typeSymbol);
-            Debug.Assert(fieldType != null);
+            AssertHelper.Assert(fieldType != null);
 
             if (fieldType != null) {
                 FieldSymbol symbol = new FieldSymbol(propertyNode.Name, typeSymbol, fieldType);
@@ -817,7 +813,7 @@ namespace ScriptSharp.Compiler {
             if (items.Count != 0) {
                 foreach (ResXItem item in items) {
                     FieldSymbol fieldSymbol = resourcesSymbol.GetMember(item.Name) as FieldSymbol;
-                    Debug.Assert(fieldSymbol != null);
+                    AssertHelper.Assert(fieldSymbol != null);
 
                     if (fieldSymbol != null) {
                         fieldSymbol.Value = item.Value;
@@ -827,15 +823,15 @@ namespace ScriptSharp.Compiler {
         }
 
         private TypeSymbol BuildType(UserTypeNode typeNode, NamespaceSymbol namespaceSymbol) {
-            Debug.Assert(typeNode != null);
-            Debug.Assert(namespaceSymbol != null);
+            AssertHelper.Assert(typeNode != null);
+            AssertHelper.Assert(namespaceSymbol != null);
 
             TypeSymbol typeSymbol = null;
             ParseNodeList attributes = typeNode.Attributes;
 
             if (typeNode.Type == TokenType.Class || typeNode.Type == TokenType.Struct) {
                 CustomTypeNode customTypeNode = (CustomTypeNode)typeNode;
-                Debug.Assert(customTypeNode != null);
+                AssertHelper.Assert(customTypeNode != null);
 
                 if (AttributeNode.FindAttribute(attributes, "ScriptObject") != null) {
                     typeSymbol = new RecordSymbol(typeNode.Name, namespaceSymbol);
@@ -876,7 +872,7 @@ namespace ScriptSharp.Compiler {
                 typeSymbol.SetIgnoreNamespace();
             }
 
-            Debug.Assert(typeSymbol != null, "Unexpected type node " + typeNode.Type);
+            AssertHelper.Assert(typeSymbol != null, "Unexpected type node " + typeNode.Type);
             if (typeSymbol != null) {
                 if ((typeNode.Modifiers & Modifiers.Public) != 0) {
                     typeSymbol.SetPublic();
@@ -894,8 +890,8 @@ namespace ScriptSharp.Compiler {
         }
 
         private void BuildType(TypeSymbol typeSymbol, UserTypeNode typeNode) {
-            Debug.Assert(typeSymbol != null);
-            Debug.Assert(typeNode != null);
+            AssertHelper.Assert(typeSymbol != null);
+            AssertHelper.Assert(typeNode != null);
 
             ParseNodeList attributes = typeNode.Attributes;
 
@@ -906,19 +902,19 @@ namespace ScriptSharp.Compiler {
                 if (dependencyAttribute != null) {
                     string dependencyIdentifier = null;
 
-                    Debug.Assert((dependencyAttribute.Arguments.Count != 0) && (dependencyAttribute.Arguments[0].NodeType == ParseNodeType.Literal));
-                    Debug.Assert(((LiteralNode)dependencyAttribute.Arguments[0]).Value is string);
+                    AssertHelper.Assert((dependencyAttribute.Arguments.Count != 0) && (dependencyAttribute.Arguments[0].NodeType == ParseNodeType.Literal));
+                    AssertHelper.Assert(((LiteralNode)dependencyAttribute.Arguments[0]).Value is string);
                     string dependencyName = (string)((LiteralNode)dependencyAttribute.Arguments[0]).Value;
 
                     if (dependencyAttribute.Arguments.Count > 1) {
-                        Debug.Assert(dependencyAttribute.Arguments[1] is BinaryExpressionNode);
+                        AssertHelper.Assert(dependencyAttribute.Arguments[1] is BinaryExpressionNode);
 
                         BinaryExpressionNode propExpression = (BinaryExpressionNode)dependencyAttribute.Arguments[1];
-                        Debug.Assert((propExpression.LeftChild.NodeType == ParseNodeType.Name) &&
+                        AssertHelper.Assert((propExpression.LeftChild.NodeType == ParseNodeType.Name) &&
                                      (String.CompareOrdinal(((NameNode)propExpression.LeftChild).Name, "Identifier") == 0));
 
-                        Debug.Assert(propExpression.RightChild.NodeType == ParseNodeType.Literal);
-                        Debug.Assert(((LiteralNode)propExpression.RightChild).Value is string);
+                        AssertHelper.Assert(propExpression.RightChild.NodeType == ParseNodeType.Literal);
+                        AssertHelper.Assert(((LiteralNode)propExpression.RightChild).Value is string);
 
                         dependencyIdentifier = (string)((LiteralNode)propExpression.RightChild).Value;
                     }
@@ -949,11 +945,11 @@ namespace ScriptSharp.Compiler {
             if (typeNode.Type == TokenType.Class || typeNode.Type == TokenType.Struct) {
                 AttributeNode extensionAttribute = AttributeNode.FindAttribute(attributes, "ScriptExtension");
                 if (extensionAttribute != null) {
-                    Debug.Assert(extensionAttribute.Arguments[0] is LiteralNode);
-                    Debug.Assert(((LiteralNode)extensionAttribute.Arguments[0]).Value is string);
+                    AssertHelper.Assert(extensionAttribute.Arguments[0] is LiteralNode);
+                    AssertHelper.Assert(((LiteralNode)extensionAttribute.Arguments[0]).Value is string);
 
                     string extendee = (string)((LiteralNode)extensionAttribute.Arguments[0]).Value;
-                    Debug.Assert(String.IsNullOrEmpty(extendee) == false);
+                    AssertHelper.Assert(String.IsNullOrEmpty(extendee) == false);
 
                     ((ClassSymbol)typeSymbol).SetExtenderClass(extendee);
                 }
@@ -974,14 +970,14 @@ namespace ScriptSharp.Compiler {
                     bool useNames = false;
 
                     if ((constantsAttribute.Arguments != null) && (constantsAttribute.Arguments.Count != 0)) {
-                        Debug.Assert(constantsAttribute.Arguments[0] is BinaryExpressionNode);
+                        AssertHelper.Assert(constantsAttribute.Arguments[0] is BinaryExpressionNode);
 
                         BinaryExpressionNode propExpression = (BinaryExpressionNode)constantsAttribute.Arguments[0];
-                        Debug.Assert((propExpression.LeftChild.NodeType == ParseNodeType.Name) &&
+                        AssertHelper.Assert((propExpression.LeftChild.NodeType == ParseNodeType.Name) &&
                                      (String.CompareOrdinal(((NameNode)propExpression.LeftChild).Name, "UseNames") == 0));
 
-                        Debug.Assert(propExpression.RightChild.NodeType == ParseNodeType.Literal);
-                        Debug.Assert(((LiteralNode)propExpression.RightChild).Value is bool);
+                        AssertHelper.Assert(propExpression.RightChild.NodeType == ParseNodeType.Literal);
+                        AssertHelper.Assert(((LiteralNode)propExpression.RightChild).Value is bool);
 
                         useNames = (bool)((LiteralNode)propExpression.RightChild).Value;
                     }
@@ -1010,14 +1006,14 @@ namespace ScriptSharp.Compiler {
 
                 foreach (NameNode node in customTypeNode.BaseTypes) {
                     TypeSymbol baseTypeSymbol = (TypeSymbol)_symbolTable.FindSymbol(node.Name, classSymbol, SymbolFilter.Types);
-                    Debug.Assert(baseTypeSymbol != null);
+                    AssertHelper.Assert(baseTypeSymbol != null);
 
                     if (baseTypeSymbol.Type == SymbolType.Class) {
-                        Debug.Assert(baseClass == null);
+                        AssertHelper.Assert(baseClass == null);
                         baseClass = (ClassSymbol)baseTypeSymbol;
                     }
                     else {
-                        Debug.Assert(baseTypeSymbol.Type == SymbolType.Interface);
+                        AssertHelper.Assert(baseTypeSymbol.Type == SymbolType.Interface);
 
                         if (interfaces == null) {
                             interfaces = new List<InterfaceSymbol>();
@@ -1043,7 +1039,7 @@ namespace ScriptSharp.Compiler {
                 foreach (NameNode node in customTypeNode.BaseTypes)
                 {
                     TypeSymbol baseTypeSymbol = (TypeSymbol)_symbolTable.FindSymbol(node.Name, interfaceSymbol, SymbolFilter.Types);
-                        Debug.Assert(baseTypeSymbol.Type == SymbolType.Interface);
+                        AssertHelper.Assert(baseTypeSymbol.Type == SymbolType.Interface);
 
                         if (interfaces == null)
                         {
@@ -1113,7 +1109,7 @@ namespace ScriptSharp.Compiler {
 
             if ((node != null) &&
                 (node.Arguments.Count != 0) && (node.Arguments[0].NodeType == ParseNodeType.Literal)) {
-                Debug.Assert(((LiteralNode)node.Arguments[0]).Value is string);
+                AssertHelper.Assert(((LiteralNode)node.Arguments[0]).Value is string);
 
                 return (string)((LiteralNode)node.Arguments[0]).Value;
             }
